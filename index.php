@@ -69,7 +69,7 @@
                         continue;
                     if( substr($html,-5)==".html"){
                         $name = substr($html,0,-5);
-                        $imagePath = "./img/$name.jpg";
+                        $imagePath = "./images/$name.jpg";
 
                         // Si no hi ha .jpg, provarem amb les altres extensions
 
