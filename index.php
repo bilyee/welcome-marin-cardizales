@@ -35,7 +35,7 @@
             vertical-align: top;
         }
         img {
-            width: 200px;
+            width: 50px;
             border-radius: 8px;
         }
         a {
