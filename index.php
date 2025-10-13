@@ -76,7 +76,7 @@
                         if (!file_exists($imagePath)) {
                             if (file_exists("./images/$name.png")) {
                                 $imagePath = "./images/$name.png";
-                            } else if (file_exists("./img/$name.jpeg")) {
+                            } else if (file_exists("./images/$name.jpeg")) {
                                 $imagePath = "./images/$name.jpeg";
                             } else {
                                 $imagePath = ""; // No hi ha imatge
