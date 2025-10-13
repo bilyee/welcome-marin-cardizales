@@ -26,12 +26,3 @@ You are welcome to add any improvements to the PHP code if you feel like doing i
 - `profile` folder : your presentation in HTML format. The **filename** have to match the one of the picture (without extension).
 
 For instance, you could add your picture ``myperson.jpg`` in the ``ìmg`` folder and then add your description ``myperson.html`` in the ``profile``folder.
-
-
-> IMPORTANT NOTE: **anyone who overwrites another person's file will be 
-qualified with ZERO** '0' in this task. So, please be nice.
-
-
-If you want to add some more presentation here in the README file, you may take a look to the [Markdown syntax](https://help.github.com/articles/markdown-basics/).
-
-
