@@ -62,7 +62,7 @@
             <table>
                 <tr>
                 <?php
-                $profile = scandir("./profile",SCANDIR_SORT_ASCENDING);
+                $profile = scandir("./profiles",SCANDIR_SORT_ASCENDING);
                 $count = 0;
                 foreach( $profile as $html ) {
                     if( $html=="." || $html==".." )
@@ -74,10 +74,10 @@
                         // Si no hi ha .jpg, provarem amb les altres extensions
 
                         if (!file_exists($imagePath)) {
-                            if (file_exists("./img/$name.png")) {
-                                $imagePath = "./img/$name.png";
+                            if (file_exists("./images/$name.png")) {
+                                $imagePath = "./images/$name.png";
                             } else if (file_exists("./img/$name.jpeg")) {
-                                $imagePath = "./img/$name.jpeg";
+                                $imagePath = "./images/$name.jpeg";
                             } else {
                                 $imagePath = ""; // No hi ha imatge
                             }
@@ -91,7 +91,7 @@
                             echo "<img src='https://via.placeholder.com/130x130?text=No+image' alt='Sense imatge'>";
                         }
                         echo "<br>";
-                        echo "<a href='profile/$html'>$name</a>";
+                        echo "<a href='profiles/$html'>$name</a>";
                         echo "</article>";
                         echo "</td>";
 
