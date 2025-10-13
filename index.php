@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projecte Welcome</title>
+    <title>Projecte Welcome MARIN CARDIZALES</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #fafafa;
+            background-color: yellow;
             margin: 0;
-            padding: 0;
         }
         header, footer {
-            background-color: #333;
+            background-color: red;
             color: white;
             text-align: center;
             padding: 1em;
         }
         footer {
-            bottom: 0;
             position: fixed;
+            bottom: 0;
             width: 100%;
         }
         main {
@@ -31,29 +30,29 @@
             text-align: center;
         }
         td {
-            width: 20%;
+            width: 30%;
             padding: 10px;
             vertical-align: top;
         }
         img {
-            width: 230px;
+            width: 50px;
             border-radius: 8px;
         }
         a {
             text-decoration: none;
-            color: #333;
+            color: white;
             font-weight: bold;
         }
         a:hover {
-            color: #0077cc;
+            color: black;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Projecte Welcome 1</h1>
+        <h1>Projecte Welcome MARIN-CARDIZALES</h1>
         <nav>
-            <p>Llistat de fitxes dels alumnes</p>
+            <p>Llistat de les fitxes dels alumnes</p>
         </nav>
     </header>
 
@@ -62,46 +61,44 @@
             <table>
                 <tr>
                 <?php
-                $profile = scandir("./profile",SCANDIR_SORT_ASCENDING);
+                $dirProfiles = './profiles';
+                $dirImages = './images';
+                $profiles = scandir($dirProfiles, SCANDIR_SORT_ASCENDING);
                 $count = 0;
-                foreach( $profile as $html ) {
-                    if( $html=="." || $html==".." )
-                        continue;
-                    if( substr($html,-5)==".html"){
-                        $name = substr($html,0,-5);
-                        $imagePath = "./img/$name.jpg";
 
-                        // Si no hi ha .jpg, provarem amb les altres extensions
+                foreach ($profiles as $file) {
+                    if ($file == '.' || $file == '..') continue;
+                   
+                    if (substr($file, -5) == '.html') {
+                        $name = substr($file, 0, -5);
 
-                        if (!file_exists($imagePath)) {
-                            if (file_exists("./img/$name.png")) {
-                                $imagePath = "./img/$name.png";
-                            } else if (file_exists("./img/$name.jpeg")) {
-                                $imagePath = "./img/$name.jpeg";
-                            } else {
-                                $imagePath = ""; // No hi ha imatge
-                            }
+                        // Buscar distintes extensions d'imatge al directori
+                        $imagePath = "";
+                        if (file_exists("$dirImages/$name.jpg")) {
+                            $imagePath = "$dirImages/$name.jpg";
+                        } elseif (file_exists("$dirImages/$name.jpeg")) {
+                            $imagePath = "$dirImages/$name.jpeg";
+                        } elseif (file_exists("$dirImages/$name.png")) {
+                            $imagePath = "$dirImages/$name.png";
                         }
 
-                        echo "<td>";
-                        echo "<article>";
+                        echo "<td><article>";
                         if ($imagePath != "") {
                             echo "<img src='$imagePath' alt='Imatge de $name'>";
                         } else {
                             echo "<img src='https://via.placeholder.com/130x130?text=No+image' alt='Sense imatge'>";
                         }
-                        echo "<br>";
-                        echo "<a href='profile/$html'>$name</a>";
-                        echo "</article>";
-                        echo "</td>";
+                        echo "<br><a href='$dirProfiles/$file'>$name</a>";
+                        echo "</article></td>";
 
                         $count++;
-
-                        // Quan arribem a 5 columnes, fem una nova fila
-                        if ($count % 5 == 0) {
-                            echo "</tr><tr>";
-                        }
+                        if ($count % 5 == 0) echo "</tr><tr>";
                     }
+                }
+
+                while ($count % 5 != 0) {
+                    echo "<td></td>";
+                    $count++;
                 }
                 ?>
                 </tr>
